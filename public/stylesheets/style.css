@@ -1,0 +1,30 @@
+@font-face {
+    font-family: SuperSmashFont;
+    src:url(super_smash_4_1_by_pokemon_diamond-d7zxu6d.ttf) format('truetype');
+}
+
+body {
+    font-family: SuperSmashFont;
+    background-color: lightblue;
+}
+
+#banner {
+    background-image: url(https://i.redd.it/yrl209dgtl311.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.voteButton {
+    font-size: 36px;
+    color: black;
+    border-radius: 10px;
+    border-color: blue;
+    background-color: aliceblue;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.voteButton:hover {
+    background-color: blue;
+    color: white;
+}

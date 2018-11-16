@@ -7,11 +7,11 @@ angular.module('character', [])
             $scope.characters = [];
             $scope.arrayNums = [];
             
-            $scope.incrementUpvotes = function(myID) {
-                alert(myID);
-                $http.put('/characters/' + myID + '/upvote')
+            $scope.incrementUpvotes = function(character) {
+                $http.put('/characters/' + character._id + '/upvote')
                     .success(function(data) {
                         console.log("upvote worked");
+                        character.upvotes += 1;
                     });
             };
             $scope.getFive = function() {
@@ -50,8 +50,7 @@ angular.module('character', [])
             };
             
             $scope.voteOnCharacter = function (num) {
-                alert($scope.characters[$scope.arrayNums[num - 1]].title);
-                $scope.incrementUpvotes($scope.characters[$scope.arrayNums[num - 1]]._id);
+                $scope.incrementUpvotes($scope.characters[$scope.arrayNums[num - 1]]);
                 $scope.getLeaderBoard();
                 $("#leaderboardDiv").show();
                 $("#votingDiv").hide();
@@ -60,14 +59,17 @@ angular.module('character', [])
             }
             
             $scope.getLeaderBoard = function() {
-                var arr = []
-                while(arr.length < 5){
-                    var r = Math.floor(Math.random()*$scope.characters.length);
-                    if(arr.indexOf(r) === -1) arr.push(r);
+                var leaderboard = [];
+                for (var i = 0; i < characters.length; i++){
+                    if (leaderboard.length == 0){
+                        leaderboard.push(characters[i]);
+                    }
+                    else{
+                        for (var j = 0; j < leaderboard.length; j++){
+                            
+                        }
+                    }
                 }
-                /*return $http.get('/leaderBoard').success(function(data) {
-                    angular.copy(data, $scope.characters);
-                });*/
             };
             
             $scope.votingAgain = function() {

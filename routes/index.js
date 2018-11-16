@@ -10,14 +10,26 @@ var Character = mongoose.model('Character');
   });
 });*/
 
+router.param('character', function(req, res, next, id) {
+  var query = Character.findById(id);
+  query.exec(function (err, character){
+    if (err) { return next(err); }
+    if (!character) { return next(new Error("can't find character")); }
+    req.character = character;
+    return next();
+  });
+});
+
+router.get('/characters/:character', function(req, res) {
+  res.json(req.comment);
+});
+
 router.put('/characters/:character/upvote', function(req, res, next) {
   req.character.upvote(function(err, character){
     if (err) { return next(err); }
     res.json(character);
   });
 });
-// GET put WOrking
-// Retrieve 10 people
 
 
 router.get('/voteOptions', function(req, res, next) {

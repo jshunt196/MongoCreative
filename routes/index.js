@@ -11,9 +11,9 @@ router.put('/characters/:character/upvote', function(req, res, next) {
 });
 
 router.get('/voteOptions', function(req, res, next) {
-  Character.find(function(err, characters){ // do stuff
+  Character.find(function(err, Characters){ // do stuff
     if(err){ return next(err); }
-    res.json(characters);
+    res.json(Characters);
   });
 });
 
@@ -24,9 +24,11 @@ router.get('/leaderBoard', function(req, res) {
 
 // return everything
 router.get('/characters', function(req, res, next) {
-  Character.find(function(err, characters){
+  console.log('Characters route called!');
+  Character.find({}, function(err, Characters){
+    console.log('Length: ' + Characters.length);
     if(err){ return next(err); }
-    res.json(characters);
+    res.json(Characters);
   });
 });
 module.exports = router;

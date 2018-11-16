@@ -6,6 +6,7 @@ angular.module('character', [])
             $scope.characters = [];
             
             $scope.incrementUpvotes = function(character) {
+                alert(character);
                 $http.put('/character/' + character._id + '/upvote')
                     .success(function(data) {
                         console.log("upvote worked");
@@ -17,6 +18,7 @@ angular.module('character', [])
                 //Get 5 random characters to vote for, name, img url and vote count
                 $("#votingDiv").show();
                 $("#leaderboardDiv").hide();
+                $scope.getAll();
             };
             
             $scope.voteOnCharacter = function () {

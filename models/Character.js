@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+mongoose.set('debug', true);
+
 var CharacterSchema = new mongoose.Schema({
   title: String,
   picture: String, //////////////////////////////////Added this

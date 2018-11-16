@@ -10,14 +10,6 @@ var db = mongoose.connection; //Saves the connection as a variable to use
 db.on('error', console.error.bind(console, 'connection error:')); //Checks for connection errors
 db.once('open', function() { //Lets us know when we're connected
     console.log('Connected to smashBros');
-    db.collection("Character").insertMany([
-      { title: "Mario", picture: "https://www.ssbwiki.com/images/thumb/4/44/Mario_SSBU.png/100px-Mario_SSBU.png", upvotes: 0 },
-      { title: "Luigi", picture: "https://www.ssbwiki.com/images/thumb/b/bb/Luigi_SSBU.png/91px-Luigi_SSBU.png", upvotes: 0 },
-      { title: "Peach", picture: "https://www.ssbwiki.com/images/thumb/7/74/Peach_SSBU.png/89px-Peach_SSBU.png", upvotes: 0 },
-      { title: "Bowser", picture: "https://www.ssbwiki.com/images/thumb/4/49/Bowser_SSBU.png/100px-Bowser_SSBU.png", upvotes: 0 },
-      { title: "Yoshi", picture: "https://www.ssbwiki.com/images/thumb/8/8d/Yoshi_SSBU.png/100px-Yoshi_SSBU.png", upvotes: 0 },
-      { title: "Donkey Kong", picture: "https://www.ssbwiki.com/images/thumb/c/c9/Donkey_Kong_SSBU.png/100px-Donkey_Kong_SSBU.png", upvotes: 0 },
-      ]);
 });
 
 

@@ -40,27 +40,27 @@
                         <div class="col-sm-2" ng-click="voteOnCharacter(1)">
                             <h3 id="bind1"></h3>
                             <img ng-src="{{linkappend1}}"/>
-                            <p id="bind1votes"></p>
+                            <h2 id="bind1votes"></h2>
                         </div>
                         <div class="col-sm-2" ng-click="voteOnCharacter(2)">
                             <h3 id="bind2"></h3>
                             <img ng-src="{{linkappend2}}"/>
-                            <p id="bind2votes"></p>
+                            <h2 id="bind2votes"></h2>
                         </div>
                         <div class="col-sm-2" ng-click="voteOnCharacter(3)">
                             <h3 id="bind3"></h3>
                             <img ng-src="{{linkappend3}}"/>
-                            <p id="bind3votes"></p>
+                            <h2 id="bind3votes"></h2>
                         </div>
                         <div class="col-sm-2" ng-click="voteOnCharacter(4)">
                             <h3 id="bind4"></h3>
                             <img ng-src="{{linkappend4}}"/>
-                            <p id="bind4votes"></p>
+                            <h2 id="bind4votes"></h2>
                         </div>
                         <div class="col-sm-2" ng-click="voteOnCharacter(5)">
                             <h3 id="bind5"></h3>
                             <img ng-src="{{linkappend5}}"/>
-                            <p id="bind5votes"></p>
+                            <h2 id="bind5votes"></h2>
                         </div>
                         <div class="col-sm-1"></div>
                     </div>
@@ -68,33 +68,11 @@
             </div>
         </form>
         <div id="leaderboardDiv">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-4"></div>
-                    <div class="col-sm-4">Current Leader!</div>
-                    <div class="col-sm-4"></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-3"></div>
-                    <div class="col-sm-2">Second Place</div>
-                    <div class="col-sm-2">Third Place</div>
-                    <div class="col-sm-2">Fourth Place</div>
-                    <div class="col-sm-3"></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-3"></div>
-                    <div class="col-sm-2">Fifth Place</div>
-                    <div class="col-sm-2">Sixth Place</div>
-                    <div class="col-sm-2">Seventh Place</div>
-                    <div class="col-sm-3"></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-3"></div>
-                    <div class="col-sm-2">Eighth Place</div>
-                    <div class="col-sm-2">Ninth Place</div>
-                    <div class="col-sm-2">Tenth Place</div>
-                    <div class="col-sm-3"></div>
-                </div>
+            <h2>Leaderboard!</h2>
+            <div ng-repeat="character in characters | orderBy : '-upvotes'">
+                <h3>{{character.title}}</h3>
+                <img ng-src="{{character.picture}}"/>
+                <h2>{{character.upvotes}}</h2>
             </div>
         </div>
     </center>

@@ -12,6 +12,8 @@ angular.module('character', [])
                     .success(function(data) {
                         console.log("upvote worked");
                         character.upvotes += 1;
+                        
+                        $("#leaderboardDiv").show();
                     });
             };
             $scope.getFive = function() {
@@ -51,26 +53,10 @@ angular.module('character', [])
             
             $scope.voteOnCharacter = function (num) {
                 $scope.incrementUpvotes($scope.characters[$scope.arrayNums[num - 1]]);
-                $scope.getLeaderBoard();
-                $("#leaderboardDiv").show();
                 $("#votingDiv").hide();
                 $("#voteFirstTime").hide();
                 $("#voteAgain").show();
             }
-            
-            $scope.getLeaderBoard = function() {
-                var leaderboard = [];
-                for (var i = 0; i < characters.length; i++){
-                    if (leaderboard.length == 0){
-                        leaderboard.push(characters[i]);
-                    }
-                    else{
-                        for (var j = 0; j < leaderboard.length; j++){
-                            
-                        }
-                    }
-                }
-            };
             
             $scope.votingAgain = function() {
                 $scope.getFive();

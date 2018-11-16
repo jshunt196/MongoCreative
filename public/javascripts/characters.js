@@ -13,13 +13,22 @@ angular.module('character', [])
                     });
             };
             $scope.getFive = function() {
-                // Find 5 random characters and return to front end.
-                
-                
-                /*return $http.get('/voteOptions').success(function(data) {
-                    angular.copy(data, $scope.characters);
-                });*/
+                console.log('got this far!')
+                //Get 5 random characters to vote for, name, img url and vote count
+                $("#votingDiv").show();
+                $("#leaderboardDiv").hide();
             };
+            
+            $scope.voteOnCharacter = function () {
+                console.log('calling voteOnCharacter')
+                $scope.incrementUpvotes(/*Some Character*/);
+                $scope.getLeaderBoard();
+                $("#leaderboardDiv").show();
+                $("#votingDiv").hide();
+                $("#voteFirstTime").hide();
+                $("#voteAgain").show();
+            }
+            
             $scope.getLeaderBoard = function() {
                 // retrieve top 10 characters by upvote
                 

@@ -1,47 +1,32 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var Comment = mongoose.model('Comment');
+var Character = mongoose.model('Character');
 
-router.get('/comments', function(req, res, next) {
-  Comment.find(function(err, comments){
-    if(err){ return next(err); }
-    res.json(comments);
-  });
-});
-
-router.post('/comments', function(req, res, next) {
-  var comment = new Comment(req.body);
-  comment.save(function(err, comment){
-    if(err){ return next(err); }
-    res.json(comment);
-  });
-});
-
-router.param('comment', function(req, res, next, id) {
-  var query = Comment.findById(id);
-  query.exec(function (err, comment){
+router.put('/characters/:character/upvote', function(req, res, next) {
+  req.character.upvote(function(err, character){
     if (err) { return next(err); }
-    if (!comment) { return next(new Error("can't find comment")); }
-    req.comment = comment;
-    return next();
+    res.json(character);
   });
 });
 
-router.get('/comments/:comment', function(req, res) {
-  res.json(req.comment);
-});
-
-router.put('/comments/:comment/upvote', function(req, res, next) {
-  req.comment.upvote(function(err, comment){
-    if (err) { return next(err); }
-    res.json(comment);
+router.get('/voteOptions', function(req, res, next) {
+  Character.find(function(err, characters){ // do stuff
+    if(err){ return next(err); }
+    res.json(characters);
   });
 });
 
-router.delete('/comments/:comment', function(req, res) {
-  console.log("in Delete");
-  req.comment.remove();
-  res.sendStatus(200);
+router.get('/leaderBoard', function(req, res) {
+  res.json(req.character);
+});
+
+
+// return everything
+router.get('/characters', function(req, res, next) {
+  Character.find(function(err, characters){
+    if(err){ return next(err); }
+    res.json(characters);
+  });
 });
 module.exports = router;
